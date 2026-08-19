@@ -1,0 +1,487 @@
+@import url('https://fonts.googleapis.com/css2?family=Alex+Brush&family=Great+Vibes&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700&display=swap');
+
+/* Reset General */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Contenedor Principal */
+.invitacion-page {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #dbe0d8;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 24px 16px;
+  gap: 16px;
+  overflow-y: auto;
+}
+
+/* Tarjeta Principal */
+.invitacion-card {
+  position: relative;
+  width: 100%;
+  max-width: 650px;
+  background-color: #fcfcf9;
+  color: #2c3e2e;
+  text-align: center;
+  padding: 40px 28px 32px 28px;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Adaptación Celular Profesional y Compacta (Corregido para respetar los bordes) */
+@media (max-width: 480px) {
+  .invitacion-page {
+    padding: 6px 4px;
+    gap: 6px;
+  }
+
+  
+
+  .invitacion-card {
+    border-radius: 6px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    padding: 16px 16px 14px 16px; /* Padding lateral seguro de 16px para que los elementos no toquen el marco */
+    max-width: 100%;
+  }
+
+  .invitacion-contenido {
+    gap: 6px; 
+    width: 100%;
+  }
+
+  .badge-cupos, 
+  .badge-nombre-input,
+  .grid-detalles,
+  .grid-inferior {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  .foto-container {
+    top: 30px;
+    height: 250px;
+    width: 88%; /* Evita que la foto se desborde del marco lateral */
+  }
+
+  .titulo-boda {
+    font-size: 32px;
+  }
+
+  .nombre-novio {
+    font-size: 40px;
+  }
+
+  .ampersand-symbol {
+    font-size: 24px;
+  }
+
+  .grid-detalles {
+    padding: 6px 0;
+  }
+
+  .num-dia {
+    font-size: 18px;
+  }
+
+  .badge-cupos {
+    padding: 4px 8px;
+  }
+}
+
+/* Fotografía de Fondo */
+.foto-container {
+  position: absolute;
+  top: 60px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 85%;
+  height: 380px;
+  z-index: 1;
+  pointer-events: none;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.foto-imagen {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 20%;
+  opacity: 0.35;
+  filter: contrast(105%) brightness(100%);
+  -webkit-mask-image: radial-gradient(circle at center, rgba(0,0,0,1) 35%, rgba(0,0,0,0) 80%);
+  mask-image: radial-gradient(circle at center, rgba(0,0,0,1) 35%, rgba(0,0,0,0) 80%);
+}
+
+/* Marco Floral */
+.marco-fondo {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background-image: url('/Fondo.png');
+  background-size: 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  mix-blend-mode: multiply;
+  border-radius: inherit;
+}
+
+/* Contenido Principal */
+.invitacion-contenido {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  gap: 16px;
+}
+
+.adorno-superior {
+  font-size: 13px;
+  color: #2c3e2e;
+}
+
+.texto-encabezado {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #2c3e2e;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.corazon-mini {
+  color: #2c3e2e;
+  font-size: 9px;
+  margin: 2px 0;
+}
+
+.titulo-boda {
+  font-family: 'Great Vibes', cursive;
+  font-size: 42px;
+  color: #2c3e2e;
+  font-weight: normal;
+  margin-top: -6px;
+}
+
+/* Nombres de los Novios */
+.bloque-nombres {
+  margin: 2px 0;
+}
+
+.nombre-novio {
+  font-family: 'Great Vibes', cursive;
+  font-size: 58px;
+  color: #2c3e2e;
+  font-weight: normal;
+  line-height: 0.9;
+}
+
+.linea-ampersand {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin: 4px 0;
+  color: #2c3e2e;
+  font-size: 12px;
+}
+
+.ampersand-symbol {
+  font-family: 'Great Vibes', cursive;
+  font-size: 34px;
+  line-height: 0;
+  margin-top: 2px;
+}
+
+.texto-leyenda {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #2c3e2e;
+  font-weight: 500;
+  line-height: 1.4;
+  max-width: 320px;
+}
+
+/* Recuadro Badge */
+.badge-cupos {
+  border: 1px solid #2c3e2e;
+  border-radius: 6px;
+  padding: 6px 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  background-color: rgba(252, 252, 249, 0.95);
+  width: 100%;
+  max-width: 360px;
+}
+
+.badge-cupos span {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 9.5px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: #2c3e2e;
+  text-transform: uppercase;
+  line-height: 1;
+}
+
+/* Grilla Superior: Fecha, Hora, Ceremonia */
+.grid-detalles {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  width: 100%;
+  border-top: 1px solid rgba(44, 62, 46, 0.35);
+  border-bottom: 1px solid rgba(44, 62, 46, 0.35);
+  padding: 12px 0;
+  align-items: center;
+}
+
+.col-detalle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0 4px;
+}
+
+.border-lat {
+  border-left: 1px solid rgba(44, 62, 46, 0.35);
+  border-right: 1px solid rgba(44, 62, 46, 0.35);
+}
+
+.icon-svg {
+  width: 22px;
+  height: 22px;
+  margin-bottom: 4px;
+  fill: none;
+  stroke: #2c3e2e;
+  stroke-width: 1.5;
+}
+
+.txt-label {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 8px;
+  letter-spacing: 0.08em;
+  color: #2c3e2e;
+  font-weight: 500;
+}
+
+.num-dia {
+  font-size: 24px;
+  font-family: 'Georgia', serif;
+  font-weight: normal;
+  color: #2c3e2e;
+  line-height: 1.1;
+  margin: 2px 0;
+}
+
+.txt-bold {
+  font-family: 'Georgia', serif;
+  font-size: 12px;
+  font-weight: bold;
+  color: #2c3e2e;
+}
+
+.txt-lugar {
+  font-family: 'Georgia', serif;
+  font-size: 10px;
+  color: #2c3e2e;
+  line-height: 1.2;
+}
+
+/* Separador Flor */
+.separador-hojas {
+  font-size: 12px;
+  color: #2c3e2e;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Grilla Inferior: Sobres y Recepción */
+.grid-inferior {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 100%;
+  align-items: center;
+}
+
+.col-sobres {
+  text-align: center;
+  padding-right: 10px;
+  border-right: 1px solid rgba(44, 62, 46, 0.25);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.titulo-sobres {
+  font-family: 'Great Vibes', cursive;
+  font-size: 20px;
+  color: #2c3e2e;
+  margin-bottom: 2px;
+}
+
+.txt-sobres-desc {
+  font-size: 7.5px;
+  font-family: 'Montserrat', sans-serif;
+  color: #2c3e2e;
+  line-height: 1.3;
+  text-transform: uppercase;
+  max-width: 160px;
+  font-weight: 500;
+}
+
+.col-recepcion {
+  text-align: center;
+  padding-left: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Pie de página */
+.txt-pie {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 8.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: #2c3e2e;
+  margin-top: 6px;
+}
+
+/* Mapas Interactivos */
+.enlace-mapa {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+  transition: transform 0.2s ease, filter 0.2s ease, background-color 0.2s ease;
+  border-radius: 4px;
+  padding: 4px;
+}
+
+.enlace-mapa:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.15);
+  background-color: rgba(44, 62, 46, 0.06);
+}
+
+.btn-ver-mapa {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 7.5px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: #2c3e2e;
+  margin-top: 4px;
+  text-decoration: underline;
+  opacity: 0.85;
+}
+
+/* Interacción Lluvia de Sobres */
+.sobres-card {
+  cursor: pointer;
+  position: relative;
+  transition: transform 0.15s ease, background-color 0.2s ease;
+  border-radius: 4px;
+  padding: 4px;
+  user-select: none;
+}
+
+.sobres-card:hover {
+  background-color: rgba(44, 62, 46, 0.05);
+}
+
+.sobres-card:active {
+  transform: scale(0.96);
+}
+
+.mario-box {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.coin-counter {
+  position: absolute;
+  top: -12px;
+  right: -24px;
+  background-color: #ffd700;
+  color: #2c3e2e;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 9.5px;
+  font-weight: bold;
+  padding: 2px 6px;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  animation: popCoin 0.3s ease-out;
+}
+
+@keyframes popCoin {
+  0% { transform: scale(0.5) translateY(4px); opacity: 0; }
+  100% { transform: scale(1) translateY(0); opacity: 1; }
+}
+
+.btn-mario-interactive {
+  background: transparent;
+  border: 1px dashed #2c3e2e;
+  color: #2c3e2e;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 7.5px;
+  font-weight: 600;
+  padding: 3px 8px;
+  border-radius: 12px;
+  margin-top: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-mario-interactive:hover {
+  background-color: #2c3e2e;
+  color: #fcfcf9;
+}
+
+/* Estilos adicionales para la caja editable de Nombre */
+.badge-nombre-input {
+  margin-bottom: 6px;
+  padding: 3px 10px;
+}
+
+.input-persona-texto {
+  border: none;
+  background: transparent;
+  outline: none;
+  text-align: center;
+  width: 100%;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: #2c3e2e;
+  text-transform: uppercase;
+}
+
+.input-persona-texto::placeholder {
+  color: rgba(44, 62, 46, 0.45);
+  font-weight: 500;
+}
