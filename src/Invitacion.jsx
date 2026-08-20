@@ -12,8 +12,8 @@ export default function Invitacion() {
   const [asistira, setAsistira] = useState(true);
   const [enviandoConfirmacion, setEnviandoConfirmacion] = useState(false);
 
-  // URL dinámica: usa la variable de entorno de Vercel o el localhost por defecto para desarrollo local
-  const API_URL = import.meta.env.VITE_API_URL = 'https://boda-backend-9sry.onrender.com';
+  // URL dinámica: usa la variable de entorno de Vercel o el link de Render por defecto
+  const API_URL = import.meta.env.VITE_API_URL || 'https://boda-backend-9sry.onrender.com';
 
   const urlIglesia = "https://maps.google.com/?q=Parroquia+San+Damian+de+Molokai";
   const urlRecepcion = "https://maps.google.com/?q=Salon+Comunal+Bello+Horizonte";
@@ -138,9 +138,14 @@ export default function Invitacion() {
 
           <div className="bloque-nombres">
             <h1 className="nombre-novio">Lina</h1>
-            <div className="linea-ampersand">
-              ➔ <span className="ampersand-symbol">&</span> ⟵
+            
+            {/* Flechas simétricas en los nombres */}
+            <div className="linea-ampersand" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '10px' }}>
+              <span style={{ fontSize: '1.2rem', lineHeight: '1' }}>→</span> 
+              <span className="ampersand-symbol">&</span> 
+              <span style={{ fontSize: '1.2rem', lineHeight: '1' }}>←</span>
             </div>
+
             <h1 className="nombre-novio">Euclides</h1>
           </div>
 
@@ -303,8 +308,11 @@ export default function Invitacion() {
             </a>
           </div>
 
-          <div className="separador-hojas">
-            ➔ ♥ ⟵
+          {/* Flechas simétricas en el separador central */}
+          <div className="separador-hojas" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}>
+            <span style={{ fontSize: '1rem', lineHeight: '1' }}>→</span> 
+            <span>♥</span> 
+            <span style={{ fontSize: '1rem', lineHeight: '1' }}>←</span>
           </div>
 
           <div className="grid-inferior">
