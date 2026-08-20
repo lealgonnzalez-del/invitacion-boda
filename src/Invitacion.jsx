@@ -12,6 +12,9 @@ export default function Invitacion() {
   const [asistira, setAsistira] = useState(true);
   const [enviandoConfirmacion, setEnviandoConfirmacion] = useState(false);
 
+  // URL dinámica: usa la variable de entorno de Vercel o el localhost por defecto para desarrollo local
+  const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+
   const urlIglesia = "https://maps.google.com/?q=Parroquia+San+Damian+de+Molokai";
   const urlRecepcion = "https://maps.google.com/?q=Salon+Comunal+Bello+Horizonte";
 
@@ -21,7 +24,7 @@ export default function Invitacion() {
 
     setCargando(true);
     try {
-      const response = await fetch(`http://localhost:5000/api/invitados/buscar?nombre=${encodeURIComponent(nombreLimpio)}`);
+      const response = await fetch(`${API_URL}/api/invitados/buscar?nombre=${encodeURIComponent(nombreLimpio)}`);
       
       if (response.ok) {
         const data = await response.json();
@@ -52,7 +55,7 @@ export default function Invitacion() {
 
     setEnviandoConfirmacion(true);
     try {
-      const response = await fetch('http://localhost:5000/api/invitados/confirmar', {
+      const response = await fetch(`${API_URL}/api/invitados/confirmar`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ 
