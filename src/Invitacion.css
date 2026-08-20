@@ -44,12 +44,10 @@
     gap: 6px;
   }
 
-  
-
   .invitacion-card {
     border-radius: 6px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-    padding: 16px 16px 14px 16px; /* Padding lateral seguro de 16px para que los elementos no toquen el marco */
+    padding: 16px 16px 14px 16px;
     max-width: 100%;
   }
 
@@ -70,7 +68,7 @@
   .foto-container {
     top: 30px;
     height: 250px;
-    width: 88%; /* Evita que la foto se desborde del marco lateral */
+    width: 88%;
   }
 
   .titulo-boda {
@@ -199,7 +197,7 @@
   gap: 10px;
   margin: 4px 0;
   color: #2c3e2e;
-  font-size: 12px;
+  font-size: 1.2rem;
 }
 
 .ampersand-symbol {
@@ -308,13 +306,14 @@
   line-height: 1.2;
 }
 
-/* Separador Flor */
+/* Separador Flor y Flechas central corregidas */
 .separador-hojas {
-  font-size: 12px;
-  color: #2c3e2e;
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 8px;
+  font-size: 1rem;
+  color: #2c3e2e;
 }
 
 /* Grilla Inferior: Sobres y Recepción */
