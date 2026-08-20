@@ -13,7 +13,7 @@ export default function Invitacion() {
   const [enviandoConfirmacion, setEnviandoConfirmacion] = useState(false);
 
   // URL dinámica: usa la variable de entorno de Vercel o el localhost por defecto para desarrollo local
-  const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+  const API_URL = import.meta.env.VITE_API_URL = 'https://boda-backend-9sry.onrender.com';';
 
   const urlIglesia = "https://maps.google.com/?q=Parroquia+San+Damian+de+Molokai";
   const urlRecepcion = "https://maps.google.com/?q=Salon+Comunal+Bello+Horizonte";
