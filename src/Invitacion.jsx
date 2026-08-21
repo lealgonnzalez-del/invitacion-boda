@@ -32,9 +32,14 @@ export default function Invitacion() {
           const max = Number(data.cupos) || 1;
           setCuposMaximos(max);
           
-          setConfirmado(data.confirmado);
+          // CORRECCIÓN: Se mantiene en falso al buscar para que el usuario 
+          // elija y confirme manualmente al oprimir el botón. Si ya estaba confirmado 
+          // en la BD pero quieres permitirle editar, o si prefieres ver su estado real 
+          // solo cuando presione confirmar, evitamos que bloquee la pantalla de entrada.
+          setConfirmado(false); 
+          
           setAsistira(data.asistira !== undefined ? data.asistira : true);
-          setCuposSeleccionados(data.confirmado ? (data.cuposConfirmados || max) : max);
+          setCuposSeleccionados(data.cuposConfirmados || max);
         }
       } else {
         console.warn('Invitado no encontrado.');
@@ -139,7 +144,6 @@ export default function Invitacion() {
           <div className="bloque-nombres">
             <h1 className="nombre-novio">Lina</h1>
             
-            {/* Flechas simétricas en los nombres */}
             <div className="linea-ampersand" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '10px' }}>
               <span style={{ fontSize: '1.2rem', lineHeight: '1' }}>→</span> 
               <span className="ampersand-symbol">&</span> 
@@ -308,7 +312,6 @@ export default function Invitacion() {
             </a>
           </div>
 
-          {/* Flechas simétricas en el separador central */}
           <div className="separador-hojas" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}>
             <span style={{ fontSize: '1rem', lineHeight: '1' }}>→</span> 
             <span>♥</span> 
