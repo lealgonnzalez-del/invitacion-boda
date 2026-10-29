@@ -19,7 +19,6 @@
   padding: 24px 16px;
   gap: 16px;
   overflow-y: auto;
-  
 }
 
 /* Tarjeta Principal */
@@ -39,28 +38,32 @@
   overflow: hidden;
 }
 
-/* Adaptación Celular */
+/* Adaptación Celular sin estiramiento exagerado */
 @media (max-width: 480px) {
   .invitacion-page {
-    padding: 6px 4px;
-    gap: 6px;
+    padding: 10px 6px;
+    gap: 8px;
   }
 
   .invitacion-card {
-    border-radius: 6px;
-    padding: 16px 16px 14px 16px;
+    border-radius: 8px;
+    padding: 20px 14px 16px 14px;
     max-width: 100%;
   }
 
   .invitacion-contenido {
-    gap: 8px; 
+    gap: 10px; 
     width: 100%;
   }
 
   .foto-container {
-    top: 25px;
-    height: 240px;
-    width: 90%;
+    top: 35px;
+    height: 250px;
+    width: 92%;
+  }
+
+  .form-container-responsive {
+    max-width: 100% !important;
   }
 }
 
@@ -77,8 +80,7 @@
   border-radius: inherit;
 }
 
-/* Fotografía de la Pareja Difuminada (Encima del fondo, detrás del texto) */
-
+/* Fotografía de la Pareja Difuminada */
 .foto-container {
   position: absolute;
   top: 120px;
@@ -92,7 +94,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  opacity: 0.20; /* Visibilidad óptima para que luzca elegante */
+  opacity: 0.20;
 }
 
 .foto-imagen {
@@ -100,15 +102,13 @@
   height: 100%;
   object-fit: cover;
   object-position: center 25%;
-  opacity: 0.85; /* Visibilidad óptima para que luzca elegante */
+  opacity: 0.85;
   filter: contrast(110%) brightness(105%);
-  /* Máscara radial para desvanecer suavemente los bordes en círculo */
   -webkit-mask-image: radial-gradient(circle at center, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 75%);
   mask-image: radial-gradient(circle at center, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 75%);
-  
 }
 
-/* Contenido Principal con el espacio superior necesario */
+/* Contenedor Principal con el espacio superior necesario */
 .invitacion-contenido {
   position: relative;
   z-index: 10;
@@ -117,7 +117,7 @@
   align-items: center;
   width: 100%;
   gap: 14px;
-  padding-top: 155px; /* Empuja los textos hacia abajo para dejar el espacio libre a la foto */
+  padding-top: 155px;
 }
 
 /* Textos en Tono Dorado Elegante */
@@ -147,7 +147,7 @@
 
 .texto-encabezado {
   font-family: 'Montserrat', sans-serif;
-  font-size: 10px;
+  font-size: 15px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   font-weight: 500;
@@ -161,7 +161,7 @@
 
 .titulo-boda {
   font-family: 'Great Vibes', cursive;
-  font-size: 42px;
+  font-size: 48px;
   font-weight: normal;
   margin-top: -4px;
 }
@@ -172,7 +172,7 @@
 
 .nombre-novio {
   font-family: 'Great Vibes', cursive;
-  font-size: 56px;
+  font-size: 64px;
   font-weight: normal;
   line-height: 0.85;
 }
@@ -195,7 +195,7 @@
 
 .texto-leyenda {
   font-family: 'Montserrat', sans-serif;
-  font-size: 9px;
+  font-size: 11.5px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   font-weight: 500;
@@ -203,28 +203,49 @@
   max-width: 320px;
 }
 
-/* Recuadros y Badges */
+/* Contenedor del Formulario y Cajas Responsivas */
+.form-container-responsive {
+  margin: 15px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  max-width: 360px;
+  box-sizing: border-box;
+}
+
+/* Cajas y Badges */
 .badge-cupos {
-  border: 1px solid rgba(223, 195, 138, 0.6);
+  border: 1px solid rgba(223, 195, 138, 0.7);
   border-radius: 6px;
-  padding: 6px 14px;
+  padding: 8px 12px;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 7px;
+  gap: 8px;
   background-color: rgba(74, 14, 23, 0.9);
   width: 100%;
-  max-width: 360px;
+  box-sizing: border-box;
+  min-height: 42px;
 }
 
-.badge-cupos span {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 9.5px;
+/* Selector estilizado con texto blanco */
+.select-personas-custom {
+  background-color: rgba(43, 6, 11, 0.9);
+  border: 1px solid #dfc38a;
+  border-radius: 4px;
+  padding: 3px 6px;
   font-weight: 600;
-  letter-spacing: 0.12em;
-  color: #dfc38a;
-  text-transform: uppercase;
-  line-height: 1;
+  font-size: 10px;
+  font-family: 'Montserrat', sans-serif;
+  color: #ffffff !important;
+  cursor: pointer;
+  outline: none;
+}
+
+.select-personas-custom option {
+  background-color: #2b060b;
+  color: #ffffff;
 }
 
 /* Grilla Superior */
@@ -268,7 +289,7 @@
 }
 
 .num-dia {
-  font-size: 22px;
+  font-size: 28px;
   font-family: 'Georgia', serif;
   font-weight: normal;
   line-height: 1.1;
@@ -277,13 +298,13 @@
 
 .txt-bold {
   font-family: 'Georgia', serif;
-  font-size: 12px;
+  font-size: 16.5px;
   font-weight: bold;
 }
 
 .txt-lugar {
   font-family: 'Georgia', serif;
-  font-size: 10px;
+  font-size: 14px;
   line-height: 1.2;
 }
 
@@ -319,7 +340,7 @@
 }
 
 .txt-sobres-desc {
-  font-size: 7.5px;
+  font-size: 9.5px;
   font-family: 'Montserrat', sans-serif;
   line-height: 1.3;
   text-transform: uppercase;
@@ -337,7 +358,7 @@
 
 .txt-pie {
   font-family: 'Montserrat', sans-serif;
-  font-size: 8.5px;
+  font-size: 10.5px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   font-weight: 600;
@@ -436,8 +457,8 @@
 
 /* Caja editable de Nombre */
 .badge-nombre-input {
-  margin-bottom: 6px;
-  padding: 3px 10px;
+  margin-bottom: 2px;
+  padding: 4px 10px;
 }
 
 .input-persona-texto {
@@ -447,53 +468,14 @@
   text-align: center;
   width: 100%;
   font-family: 'Montserrat', sans-serif;
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 600;
   letter-spacing: 0.12em;
-  color: #dfc38a;
+  color: #ffffff;
   text-transform: uppercase;
 }
 
 .input-persona-texto::placeholder {
-  color: rgba(223, 195, 138, 0.6);
+  color: rgba(223, 195, 138, 0.7);
   font-weight: 500;
-}
-.texto-encabezado {
-  font-size: 15px; /* (Antes 10px) */
-}
-
-.titulo-boda {
-  font-size: 48px; /* (Antes 42px) */
-}
-
-.nombre-novio {
-  font-size: 64px; /* (Antes 56px) - Letras de Lina y Euclides más destacadas */
-}
-
-.texto-leyenda {
-  font-size: 11.5px; /* (Antes 9px) */
-}
-
-.num-dia {
-  font-size: 28px; /* (Antes 22px) */
-}
-
-.txt-bold {
-  font-size: 16.5px; /* (Antes 12px) */
-}
-
-.txt-lugar {
-  font-size: 14px; /* (Antes 10px) */
-}
-
-.titulo-sobres {
-  font-size: 20px; /* (Antes 20px) */
-}
-
-.txt-sobres-desc {
-  font-size: 9.5px; /* (Antes 7.5px) */
-}
-
-.txt-pie {
-  font-size: 10.5px; /* (Antes 8.5px) */
 }

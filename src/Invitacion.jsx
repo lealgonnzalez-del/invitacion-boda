@@ -12,8 +12,7 @@ export default function Invitacion() {
   const [asistira, setAsistira] = useState(true);
   const [enviandoConfirmacion, setEnviandoConfirmacion] = useState(false);
 
-  // URL dinámica: usa la variable de entorno de Vercel o el link de Render por defecto
-  const API_URL = import.meta.env.VITE_API_URL = 'https://boda-backend-9sry.onrender.com';
+  const API_URL = 'https://boda-backend-9sry.onrender.com';
 
   const urlIglesia = "https://maps.google.com/?q=Parroquia+San+Damian+de+Molokai";
   const urlRecepcion = "https://maps.google.com/?q=Salon+Comunal+Bello+Horizonte";
@@ -31,13 +30,7 @@ export default function Invitacion() {
         if (data) {
           const max = Number(data.cupos) || 1;
           setCuposMaximos(max);
-          
-          // CORRECCIÓN: Se mantiene en falso al buscar para que el usuario 
-          // elija y confirme manualmente al oprimir el botón. Si ya estaba confirmado 
-          // en la BD pero quieres permitirle editar, o si prefieres ver su estado real 
-          // solo cuando presione confirmar, evitamos que bloquee la pantalla de entrada.
           setConfirmado(false); 
-          
           setAsistira(data.asistira !== undefined ? data.asistira : true);
           setCuposSeleccionados(data.cuposConfirmados || max);
         }
@@ -144,10 +137,10 @@ export default function Invitacion() {
           <div className="bloque-nombres">
             <h1 className="nombre-novio">Lina</h1>
             
-            <div className="linea-ampersand" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '10px' }}>
-              <span style={{ fontSize: '1.2rem', lineHeight: '1' }}>→</span> 
+            <div className="linea-ampersand">
+              <span>→</span> 
               <span className="ampersand-symbol">&</span> 
-              <span style={{ fontSize: '1.2rem', lineHeight: '1' }}>←</span>
+              <span>←</span>
             </div>
 
             <h1 className="nombre-novio">Euclides</h1>
@@ -159,55 +152,48 @@ export default function Invitacion() {
             UNIREMOS NUESTRAS VIDAS Y COMENZAREMOS<br />JUNTOS NUESTRA MEJOR HISTORIA.
           </p>
 
-          <div className="badge-cupos badge-nombre-input">
-            <input 
-              type="text" 
-              className="input-persona-texto"
-              value={nombrePersona}
-              onChange={(e) => setNombrePersona(e.target.value)}
-              onBlur={() => buscarInvitado(nombrePersona)}
-              onKeyDown={handleKeyDown}
-              placeholder="ESCRIBE AQUÍ TU NOMBRE"
-            />
-          </div>
-
-          <div className="badge-cupos">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" style={{ color: '#2c3e2e' }}>
-              <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
-            </svg>
+          {/* CONTENEDOR RESPONSIVE DE CAJAS Y BOTONES */}
+          <div className="form-container-responsive">
             
-            {cargando ? (
-              <span>BUSCANDO...</span>
-            ) : (
-              <div style={{ display: 'flex', alignItems: 'center', gap: '6px', width: '100%', justifyContent: 'center' }}>
-                <span>CANTIDAD DE PERSONAS:</span>
-                <select
-                  value={cuposSeleccionados}
-                  onChange={(e) => setCuposSeleccionados(Number(e.target.value))}
-                  style={{
-                    backgroundColor: 'transparent',
-                    border: '1px solid #2c3e2e',
-                    borderRadius: '4px',
-                    padding: '2px 6px',
-                    fontWeight: 'bold',
-                    fontSize: '9.5px',
-                    fontFamily: 'Montserrat, sans-serif',
-                    color: '#2c3e2e',
-                    cursor: 'pointer',
-                    outline: 'none'
-                  }}
-                >
-                  {Array.from({ length: cuposMaximos }, (_, i) => (
-                    <option key={i + 1} value={i + 1}>
-                      +{i + 1} {i === 0 ? 'persona' : 'personas'} (Máx. {cuposMaximos})
-                    </option>
-                  ))}
-                </select>
-              </div>
-            )}
-          </div>
+            <div className="badge-cupos badge-nombre-input">
+              <input 
+                type="text" 
+                className="input-persona-texto"
+                value={nombrePersona}
+                onChange={(e) => setNombrePersona(e.target.value)}
+                onBlur={() => buscarInvitado(nombrePersona)}
+                onKeyDown={handleKeyDown}
+                placeholder="ESCRIBE AQUÍ TU NOMBRE"
+              />
+            </div>
 
-          <div style={{ margin: '15px 0', display: 'flex', flexDirection: 'column', gap: '8px', width: '100%', maxWidth: '360px' }}>
+            <div className="badge-cupos">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" style={{ color: '#dfc38a', flexShrink: 0 }}>
+                <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+              </svg>
+              
+              {cargando ? (
+                <span style={{ color: '#dfc38a', fontSize: '10px' }}>BUSCANDO...</span>
+              ) : (
+                <div style={{ display: 'flex', alignItems: 'center', gap: '6px', width: '100%', justifyContent: 'space-between' }}>
+                  <span style={{ fontSize: '9px', letterSpacing: '0.08em', color: '#dfc38a', fontWeight: 'bold' }}>
+                    CANTIDAD DE PERSONAS:
+                  </span>
+                  <select
+                    value={cuposSeleccionados}
+                    onChange={(e) => setCuposSeleccionados(Number(e.target.value))}
+                    className="select-personas-custom"
+                  >
+                    {Array.from({ length: cuposMaximos }, (_, i) => (
+                      <option key={i + 1} value={i + 1}>
+                        +{i + 1} {i === 0 ? 'persona' : 'personas'} (Máx. {cuposMaximos})
+                      </option>
+                    ))}
+                  </select>
+                </div>
+              )}
+            </div>
+
             {!confirmado ? (
               <>
                 <button
@@ -216,16 +202,17 @@ export default function Invitacion() {
                   disabled={enviandoConfirmacion}
                   style={{
                     width: '100%',
-                    padding: '10px',
-                    backgroundColor: '#2c3e2e',
-                    color: '#fff',
+                    padding: '11px',
+                    backgroundColor: '#dfc38a',
+                    color: '#4a0e17',
                     border: 'none',
                     borderRadius: '6px',
                     cursor: 'pointer',
                     fontWeight: 'bold',
                     fontSize: '11px',
                     fontFamily: 'Montserrat, sans-serif',
-                    boxShadow: '0 4px 6px rgba(0,0,0,0.1)'
+                    boxShadow: '0 4px 8px rgba(0,0,0,0.3)',
+                    letterSpacing: '0.05em'
                   }}
                 >
                   {enviandoConfirmacion ? "ENVIANDO..." : "✨ CONFIRMAR ASISTENCIA ✨"}
@@ -256,7 +243,7 @@ export default function Invitacion() {
                   width: '100%',
                   padding: '10px',
                   backgroundColor: asistira ? '#27ae60' : '#e74c3c',
-                  color: '#fff',
+                  color: '#ffffff',
                   borderRadius: '6px',
                   textAlign: 'center',
                   boxShadow: '0 4px 6px rgba(0,0,0,0.1)'
@@ -265,7 +252,7 @@ export default function Invitacion() {
                 <div style={{ fontWeight: 'bold', fontSize: '11px', fontFamily: 'Montserrat, sans-serif' }}>
                   {asistira ? "¡ASISTENCIA CONFIRMADA! ✔" : "RESPUESTA REGISTRADA"}
                 </div>
-                <div style={{ fontSize: '9.5px', marginTop: '2px', opacity: 0.9, fontFamily: 'Montserrat, sans-serif' }}>
+                <div style={{ fontSize: '9.5px', marginTop: '2px', opacity: 0.95, fontFamily: 'Montserrat, sans-serif' }}>
                   {asistira 
                     ? `Gracias por confirmar tu asistencia (${cuposSeleccionados} ${cuposSeleccionados === 1 ? 'cupo' : 'cupos'})` 
                     : "Lamentamos que no nos acompañes, ¡gracias por avisarnos!"}
@@ -312,16 +299,16 @@ export default function Invitacion() {
             </a>
           </div>
 
-          <div className="separador-hojas" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}>
-            <span style={{ fontSize: '1rem', lineHeight: '1' }}>→</span> 
+          <div className="separador-hojas">
+            <span>→</span> 
             <span>♥</span> 
-            <span style={{ fontSize: '1rem', lineHeight: '1' }}>←</span>
+            <span>←</span>
           </div>
 
           <div className="grid-inferior">
             <div className="col-sobres sobres-card" onClick={dispararMonedas}>
               <div className="mario-box">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2c3e2e" strokeWidth="1.2">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#dfc38a" strokeWidth="1.2">
                   <rect x="3" y="5" width="18" height="14" rx="2" />
                   <path d="M3 7l9 6 9-6" />
                   <path d="M12 11l-1 1-1-1" />
