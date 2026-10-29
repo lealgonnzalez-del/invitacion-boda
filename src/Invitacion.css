@@ -19,6 +19,7 @@
   padding: 24px 16px;
   gap: 16px;
   overflow-y: auto;
+  
 }
 
 /* Tarjeta Principal */
@@ -70,7 +71,7 @@
   z-index: 1;
   pointer-events: none;
   background-image: url('/Fondo.jpeg');
-  background-size: 95% 95%;
+  background-size: 115% 115%;
   background-position: center;
   background-repeat: no-repeat;
   border-radius: inherit;
@@ -80,17 +81,18 @@
 
 .foto-container {
   position: absolute;
-  top: 30px;
+  top: 120px;
   left: 50%;
   transform: translateX(-50%);
-  width: 85%;
-  height: 250px;
+  width: 95%;
+  height: 450px;
   z-index: 2;
   pointer-events: none;
   overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
+  opacity: 0.20; /* Visibilidad óptima para que luzca elegante */
 }
 
 .foto-imagen {
@@ -103,6 +105,7 @@
   /* Máscara radial para desvanecer suavemente los bordes en círculo */
   -webkit-mask-image: radial-gradient(circle at center, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 75%);
   mask-image: radial-gradient(circle at center, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 75%);
+  
 }
 
 /* Contenido Principal con el espacio superior necesario */
@@ -454,4 +457,43 @@
 .input-persona-texto::placeholder {
   color: rgba(223, 195, 138, 0.6);
   font-weight: 500;
+}
+.texto-encabezado {
+  font-size: 15px; /* (Antes 10px) */
+}
+
+.titulo-boda {
+  font-size: 48px; /* (Antes 42px) */
+}
+
+.nombre-novio {
+  font-size: 64px; /* (Antes 56px) - Letras de Lina y Euclides más destacadas */
+}
+
+.texto-leyenda {
+  font-size: 11.5px; /* (Antes 9px) */
+}
+
+.num-dia {
+  font-size: 28px; /* (Antes 22px) */
+}
+
+.txt-bold {
+  font-size: 16.5px; /* (Antes 12px) */
+}
+
+.txt-lugar {
+  font-size: 14px; /* (Antes 10px) */
+}
+
+.titulo-sobres {
+  font-size: 20px; /* (Antes 20px) */
+}
+
+.txt-sobres-desc {
+  font-size: 9.5px; /* (Antes 7.5px) */
+}
+
+.txt-pie {
+  font-size: 10.5px; /* (Antes 8.5px) */
 }
