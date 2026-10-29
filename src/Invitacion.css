@@ -70,17 +70,17 @@
   z-index: 1;
   pointer-events: none;
   background-image: url('/Fondo.jpeg');
-  background-size: 100% 100%;
+  background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   border-radius: inherit;
 }
 
 /* Fotografía de la Pareja Difuminada (Encima del fondo, detrás del texto) */
-/* Fotografía de la Pareja Difuminada (Encima del fondo, detrás del texto) */
+
 .foto-container {
   position: absolute;
-  top: 30px;
+  top: 75px;
   left: 50%;
   transform: translateX(-50%);
   width: 85%;
