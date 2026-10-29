@@ -14,7 +14,7 @@
   background-color: #2b060b;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   padding: 24px 16px;
   gap: 16px;
@@ -25,11 +25,11 @@
 .invitacion-card {
   position: relative;
   width: 100%;
-  max-width: 400px;
+  max-width: 650px;
   background-color: #4a0e17;
   color: #dfc38a;
   text-align: center;
-  padding: 22px 16px 18px 16px;
+  padding: 45px 28px 32px 28px;
   border-radius: 12px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
   display: flex;
@@ -87,7 +87,7 @@
   left: 50%;
   transform: translateX(-50%);
   width: 95%;
-  height: 300px;
+  height: 450px;
   z-index: 2;
   pointer-events: none;
   overflow: hidden;
@@ -116,8 +116,8 @@
   flex-direction: column;
   align-items: center;
   width: 100%;
-  gap: 7px;
-  padding-top: 110px;
+  gap: 14px;
+  padding-top: 155px;
 }
 
 /* Textos en Tono Dorado Elegante */
