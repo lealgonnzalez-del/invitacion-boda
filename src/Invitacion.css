@@ -63,9 +63,10 @@
   }
 
   .form-container-responsive {
-    max-width: 400px;
-    width: 85% important;
-    margin: 0 auto;
+    max-width: 100% !important;
+    box-sizing: border-box;
+    padding-left: 25px;
+    padding-right: 25px;
   }
 }
 
