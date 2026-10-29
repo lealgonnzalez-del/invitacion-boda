@@ -78,6 +78,7 @@
 
 /* Fotografía de la Pareja Difuminada (Encima del fondo, detrás del texto) */
 .foto-container {
+  background-image: url('/Foto.jpeg');
   position: absolute;
   top: 50px;
   left: 50%;
