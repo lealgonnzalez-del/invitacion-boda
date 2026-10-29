@@ -26,10 +26,10 @@
   position: relative;
   width: 100%;
   max-width: 650px;
-  background-color: #4a0e17; /* Color vino tinto de respaldo */
-  color: #dfc38a; /* Dorado base */
+  background-color: #4a0e17;
+  color: #dfc38a;
   text-align: center;
-  padding: 40px 28px 32px 28px;
+  padding: 45px 28px 32px 28px;
   border-radius: 12px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
   display: flex;
@@ -38,7 +38,7 @@
   overflow: hidden;
 }
 
-/* Adaptación Celular Profesional y Compacta */
+/* Adaptación Celular */
 @media (max-width: 480px) {
   .invitacion-page {
     padding: 6px 4px;
@@ -47,65 +47,44 @@
 
   .invitacion-card {
     border-radius: 6px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     padding: 16px 16px 14px 16px;
     max-width: 100%;
   }
 
   .invitacion-contenido {
-    gap: 6px; 
+    gap: 8px; 
     width: 100%;
-  }
-
-  .badge-cupos, 
-  .badge-nombre-input,
-  .grid-detalles,
-  .grid-inferior {
-    width: 100%;
-    max-width: 100%;
-    box-sizing: border-box;
   }
 
   .foto-container {
-    top: 30px;
-    height: 250px;
-    width: 88%;
-  }
-
-  .titulo-boda {
-    font-size: 32px;
-  }
-
-  .nombre-novio {
-    font-size: 40px;
-  }
-
-  .ampersand-symbol {
-    font-size: 24px;
-  }
-
-  .grid-detalles {
-    padding: 6px 0;
-  }
-
-  .num-dia {
-    font-size: 18px;
-  }
-
-  .badge-cupos {
-    padding: 4px 8px;
+    top: 25px;
+    height: 240px;
+    width: 90%;
   }
 }
 
-/* Fotografía de Fondo */
+/* Marco Floral de Fondo (Detrás de todo) */
+.marco-fondo {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background-image: url('/Fondo.jpeg');
+  background-size: 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: inherit;
+}
+
+/* Fotografía de la Pareja Difuminada (Encima del fondo, detrás del texto) */
 .foto-container {
   position: absolute;
-  top: 60px;
+  top: 50px;
   left: 50%;
   transform: translateX(-50%);
-  width: 85%;
-  height: 380px;
-  z-index: 1;
+  width: 82%;
+  height: 360px;
+  z-index: 2;
   pointer-events: none;
   overflow: hidden;
   display: flex;
@@ -118,26 +97,13 @@
   height: 100%;
   object-fit: cover;
   object-position: center 20%;
-  opacity: 0.85;
+  opacity: 0.45; /* Opacidad equilibrada para que se note difuminada */
   filter: contrast(110%) brightness(105%);
-  -webkit-mask-image: radial-gradient(circle at center, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 85%);
-  mask-image: radial-gradient(circle at center, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 85%);
+  -webkit-mask-image: radial-gradient(circle at center, rgba(0,0,0,1) 45%, rgba(0,0,0,0) 85%);
+  mask-image: radial-gradient(circle at center, rgba(0,0,0,1) 45%, rgba(0,0,0,0) 85%);
 }
 
-/* Marco Floral y Fondo Vino Tinto */
-.marco-fondo {
-  position: absolute;
-  inset: 0;
-  z-index: 2;
-  pointer-events: none;
-  background-image: url('/Fondo.jpeg');
-  background-size: 100% 100%;
-  background-position: center;
-  background-repeat: no-repeat;
-  border-radius: inherit;
-}
-
-/* Contenido Principal */
+/* Contenido Principal (Siempre al frente) */
 .invitacion-contenido {
   position: relative;
   z-index: 10;
@@ -145,10 +111,10 @@
   flex-direction: column;
   align-items: center;
   width: 100%;
-  gap: 16px;
+  gap: 14px;
 }
 
-/* Textos generales y elementos en tono Dorado Elegante */
+/* Textos en Tono Dorado Elegante */
 .adorno-superior,
 .texto-encabezado, 
 .corazon-mini,
@@ -191,19 +157,18 @@
   font-family: 'Great Vibes', cursive;
   font-size: 42px;
   font-weight: normal;
-  margin-top: -6px;
+  margin-top: -4px;
 }
 
-/* Nombres de los Novios */
 .bloque-nombres {
   margin: 2px 0;
 }
 
 .nombre-novio {
   font-family: 'Great Vibes', cursive;
-  font-size: 58px;
+  font-size: 56px;
   font-weight: normal;
-  line-height: 0.9;
+  line-height: 0.85;
 }
 
 .linea-ampersand {
@@ -211,13 +176,13 @@
   align-items: center;
   justify-content: center;
   gap: 10px;
-  margin: 4px 0;
+  margin: 2px 0;
   font-size: 1.2rem;
 }
 
 .ampersand-symbol {
   font-family: 'Great Vibes', cursive;
-  font-size: 34px;
+  font-size: 32px;
   line-height: 0;
   margin-top: 2px;
 }
@@ -232,7 +197,7 @@
   max-width: 320px;
 }
 
-/* Recuadro Badge */
+/* Recuadros y Badges */
 .badge-cupos {
   border: 1px solid rgba(223, 195, 138, 0.6);
   border-radius: 6px;
@@ -256,14 +221,14 @@
   line-height: 1;
 }
 
-/* Grilla Superior: Fecha, Hora, Ceremonia */
+/* Grilla Superior */
 .grid-detalles {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   width: 100%;
   border-top: 1px solid rgba(223, 195, 138, 0.4);
   border-bottom: 1px solid rgba(223, 195, 138, 0.4);
-  padding: 12px 0;
+  padding: 10px 0;
   align-items: center;
 }
 
@@ -281,8 +246,8 @@
 }
 
 .icon-svg {
-  width: 22px;
-  height: 22px;
+  width: 20px;
+  height: 20px;
   margin-bottom: 4px;
   fill: none;
   stroke: #dfc38a !important;
@@ -297,7 +262,7 @@
 }
 
 .num-dia {
-  font-size: 24px;
+  font-size: 22px;
   font-family: 'Georgia', serif;
   font-weight: normal;
   line-height: 1.1;
@@ -316,7 +281,6 @@
   line-height: 1.2;
 }
 
-/* Separador Flor y Flechas central */
 .separador-hojas {
   display: flex;
   align-items: center;
@@ -325,7 +289,7 @@
   font-size: 1rem;
 }
 
-/* Grilla Inferior: Sobres y Recepción */
+/* Grilla Inferior */
 .grid-inferior {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -365,14 +329,13 @@
   align-items: center;
 }
 
-/* Pie de página */
 .txt-pie {
   font-family: 'Montserrat', sans-serif;
   font-size: 8.5px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   font-weight: 600;
-  margin-top: 6px;
+  margin-top: 4px;
 }
 
 /* Mapas Interactivos */
@@ -465,7 +428,7 @@
   color: #4a0e17;
 }
 
-/* Estilos adicionales para la caja editable de Nombre */
+/* Caja editable de Nombre */
 .badge-nombre-input {
   margin-bottom: 6px;
   padding: 3px 10px;
