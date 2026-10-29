@@ -11,7 +11,7 @@
 .invitacion-page {
   width: 100%;
   min-height: 100vh;
-  background-color: #dbe0d8;
+  background-color: #2b060b; /* Fondo exterior acorde al vino tinto */
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -26,18 +26,18 @@
   position: relative;
   width: 100%;
   max-width: 650px;
-  background-color: #fcfcf9;
-  color: #2c3e2e;
+  background-color: #4a0e17; /* Respaldo sólido vino tinto */
+  color: #fcfcf9;
   text-align: center;
   padding: 40px 28px 32px 28px;
   border-radius: 12px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-/* Adaptación Celular Profesional y Compacta (Corregido para respetar los bordes) */
+/* Adaptación Celular Profesional y Compacta */
 @media (max-width: 480px) {
   .invitacion-page {
     padding: 6px 4px;
@@ -46,7 +46,7 @@
 
   .invitacion-card {
     border-radius: 6px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     padding: 16px 16px 14px 16px;
     max-width: 100%;
   }
@@ -96,7 +96,7 @@
   }
 }
 
-/* Fotografía de Fondo */
+/* Fotografía de Fondo integrada con el vino tinto */
 .foto-container {
   position: absolute;
   top: 60px;
@@ -117,13 +117,13 @@
   height: 100%;
   object-fit: cover;
   object-position: center 20%;
-  opacity: 0.35;
-  filter: contrast(105%) brightness(100%);
-  -webkit-mask-image: radial-gradient(circle at center, rgba(0,0,0,1) 35%, rgba(0,0,0,0) 80%);
-  mask-image: radial-gradient(circle at center, rgba(0,0,0,1) 35%, rgba(0,0,0,0) 80%);
+  opacity: 0.85; /* Optimizada para resaltar sobre el fondo oscuro */
+  filter: contrast(110%) brightness(105%);
+  -webkit-mask-image: radial-gradient(circle at center, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 85%);
+  mask-image: radial-gradient(circle at center, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 85%);
 }
 
-/* Marco Floral */
+/* Marco Floral y Fondo Vino Tinto */
 .marco-fondo {
   position: absolute;
   inset: 0;
@@ -149,7 +149,7 @@
 
 .adorno-superior {
   font-size: 13px;
-  color: #2c3e2e;
+  color: #fcfcf9;
 }
 
 .texto-encabezado {
@@ -157,13 +157,13 @@
   font-size: 10px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: #2c3e2e;
+  color: #fcfcf9;
   font-weight: 500;
   line-height: 1.4;
 }
 
 .corazon-mini {
-  color: #2c3e2e;
+  color: #fcfcf9;
   font-size: 9px;
   margin: 2px 0;
 }
@@ -171,7 +171,7 @@
 .titulo-boda {
   font-family: 'Great Vibes', cursive;
   font-size: 42px;
-  color: #2c3e2e;
+  color: #fcfcf9;
   font-weight: normal;
   margin-top: -6px;
 }
@@ -184,7 +184,7 @@
 .nombre-novio {
   font-family: 'Great Vibes', cursive;
   font-size: 58px;
-  color: #2c3e2e;
+  color: #fcfcf9;
   font-weight: normal;
   line-height: 0.9;
 }
@@ -195,7 +195,7 @@
   justify-content: center;
   gap: 10px;
   margin: 4px 0;
-  color: #2c3e2e;
+  color: #fcfcf9;
   font-size: 1.2rem;
 }
 
@@ -204,6 +204,7 @@
   font-size: 34px;
   line-height: 0;
   margin-top: 2px;
+  color: #fcfcf9;
 }
 
 .texto-leyenda {
@@ -211,7 +212,7 @@
   font-size: 9px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: #2c3e2e;
+  color: #fcfcf9;
   font-weight: 500;
   line-height: 1.4;
   max-width: 320px;
@@ -219,14 +220,14 @@
 
 /* Recuadro Badge */
 .badge-cupos {
-  border: 1px solid #2c3e2e;
+  border: 1px solid rgba(252, 252, 249, 0.5);
   border-radius: 6px;
   padding: 6px 14px;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 7px;
-  background-color: rgba(252, 252, 249, 0.95);
+  background-color: rgba(74, 14, 23, 0.85);
   width: 100%;
   max-width: 360px;
 }
@@ -236,7 +237,7 @@
   font-size: 9.5px;
   font-weight: 600;
   letter-spacing: 0.12em;
-  color: #2c3e2e;
+  color: #fcfcf9;
   text-transform: uppercase;
   line-height: 1;
 }
@@ -246,8 +247,8 @@
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   width: 100%;
-  border-top: 1px solid rgba(44, 62, 46, 0.35);
-  border-bottom: 1px solid rgba(44, 62, 46, 0.35);
+  border-top: 1px solid rgba(252, 252, 249, 0.35);
+  border-bottom: 1px solid rgba(252, 252, 249, 0.35);
   padding: 12px 0;
   align-items: center;
 }
@@ -261,8 +262,8 @@
 }
 
 .border-lat {
-  border-left: 1px solid rgba(44, 62, 46, 0.35);
-  border-right: 1px solid rgba(44, 62, 46, 0.35);
+  border-left: 1px solid rgba(252, 252, 249, 0.35);
+  border-right: 1px solid rgba(252, 252, 249, 0.35);
 }
 
 .icon-svg {
@@ -270,7 +271,7 @@
   height: 22px;
   margin-bottom: 4px;
   fill: none;
-  stroke: #2c3e2e;
+  stroke: #fcfcf9;
   stroke-width: 1.5;
 }
 
@@ -278,7 +279,7 @@
   font-family: 'Montserrat', sans-serif;
   font-size: 8px;
   letter-spacing: 0.08em;
-  color: #2c3e2e;
+  color: #fcfcf9;
   font-weight: 500;
 }
 
@@ -286,7 +287,7 @@
   font-size: 24px;
   font-family: 'Georgia', serif;
   font-weight: normal;
-  color: #2c3e2e;
+  color: #fcfcf9;
   line-height: 1.1;
   margin: 2px 0;
 }
@@ -295,24 +296,24 @@
   font-family: 'Georgia', serif;
   font-size: 12px;
   font-weight: bold;
-  color: #2c3e2e;
+  color: #fcfcf9;
 }
 
 .txt-lugar {
   font-family: 'Georgia', serif;
   font-size: 10px;
-  color: #2c3e2e;
+  color: #fcfcf9;
   line-height: 1.2;
 }
 
-/* Separador Flor y Flechas central corregidas */
+/* Separador Flor y Flechas central */
 .separador-hojas {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
   font-size: 1rem;
-  color: #2c3e2e;
+  color: #fcfcf9;
 }
 
 /* Grilla Inferior: Sobres y Recepción */
@@ -326,7 +327,7 @@
 .col-sobres {
   text-align: center;
   padding-right: 10px;
-  border-right: 1px solid rgba(44, 62, 46, 0.25);
+  border-right: 1px solid rgba(252, 252, 249, 0.3);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -335,14 +336,14 @@
 .titulo-sobres {
   font-family: 'Great Vibes', cursive;
   font-size: 20px;
-  color: #2c3e2e;
+  color: #fcfcf9;
   margin-bottom: 2px;
 }
 
 .txt-sobres-desc {
   font-size: 7.5px;
   font-family: 'Montserrat', sans-serif;
-  color: #2c3e2e;
+  color: #fcfcf9;
   line-height: 1.3;
   text-transform: uppercase;
   max-width: 160px;
@@ -364,7 +365,7 @@
   letter-spacing: 0.08em;
   text-transform: uppercase;
   font-weight: 600;
-  color: #2c3e2e;
+  color: #fcfcf9;
   margin-top: 6px;
 }
 
@@ -381,7 +382,7 @@
 .enlace-mapa:hover {
   transform: translateY(-1px);
   filter: brightness(1.15);
-  background-color: rgba(44, 62, 46, 0.06);
+  background-color: rgba(252, 252, 249, 0.1);
 }
 
 .btn-ver-mapa {
@@ -389,10 +390,10 @@
   font-size: 7.5px;
   font-weight: 600;
   letter-spacing: 0.06em;
-  color: #2c3e2e;
+  color: #fcfcf9;
   margin-top: 4px;
   text-decoration: underline;
-  opacity: 0.85;
+  opacity: 0.9;
 }
 
 /* Interacción Lluvia de Sobres */
@@ -406,7 +407,7 @@
 }
 
 .sobres-card:hover {
-  background-color: rgba(44, 62, 46, 0.05);
+  background-color: rgba(252, 252, 249, 0.08);
 }
 
 .sobres-card:active {
@@ -425,7 +426,7 @@
   top: -12px;
   right: -24px;
   background-color: #ffd700;
-  color: #2c3e2e;
+  color: #4a0e17;
   font-family: 'Montserrat', sans-serif;
   font-size: 9.5px;
   font-weight: bold;
@@ -442,8 +443,8 @@
 
 .btn-mario-interactive {
   background: transparent;
-  border: 1px dashed #2c3e2e;
-  color: #2c3e2e;
+  border: 1px dashed rgba(252, 252, 249, 0.7);
+  color: #fcfcf9;
   font-family: 'Montserrat', sans-serif;
   font-size: 7.5px;
   font-weight: 600;
@@ -455,8 +456,8 @@
 }
 
 .btn-mario-interactive:hover {
-  background-color: #2c3e2e;
-  color: #fcfcf9;
+  background-color: #fcfcf9;
+  color: #4a0e17;
 }
 
 /* Estilos adicionales para la caja editable de Nombre */
@@ -475,11 +476,11 @@
   font-size: 10px;
   font-weight: 600;
   letter-spacing: 0.12em;
-  color: #2c3e2e;
+  color: #fcfcf9;
   text-transform: uppercase;
 }
 
 .input-persona-texto::placeholder {
-  color: rgba(44, 62, 46, 0.45);
+  color: rgba(252, 252, 249, 0.6);
   font-weight: 500;
 }
