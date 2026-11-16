@@ -202,7 +202,7 @@ export default function Invitacion() {
               {nombreOficialBD && !cargando && (
                 <div style={{ marginTop: '4px' }}>
                   <span style={{ 
-                    fontSize: '9px', 
+                    fontSize: '12px', 
                     color: '#dfc38a', 
                     textTransform: 'capitalize',
                     letterSpacing: '0.05em',
@@ -237,17 +237,17 @@ export default function Invitacion() {
                   <span style={{ fontSize: '9px', letterSpacing: '0.08em', color: '#dfc38a', fontWeight: 'bold' }}>
                     CUPOS:
                   </span>
-                  <select
-                    value={cuposSeleccionados}
-                    onChange={(e) => setCuposSeleccionados(Number(e.target.value))}
-                    className="select-personas-custom"
-                  >
-                    {Array.from({ length: cuposMaximos }, (_, i) => (
-                      <option key={i + 1} value={i + 1}>
-                        +{i + 1} {i === 0 ? 'persona' : 'personas'} (Máx. {cuposMaximos})
-                      </option>
-                    ))}
-                  </select>
+                 <select
+                  value={cuposSeleccionados}
+                  onChange={(e) => setCuposSeleccionados(Number(e.target.value))}
+                  className="select-personas-custom"
+                >
+                  {Array.from({ length: cuposMaximos }, (_, i) => (
+                    <option key={i + 1} value={i + 1}>
+                      {i + 1} {i === 0 ? 'persona' : 'personas'}
+                    </option>
+                  ))}
+                </select>
                 </div>
               )}
             </div>
