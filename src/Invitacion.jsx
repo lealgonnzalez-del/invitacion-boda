@@ -180,7 +180,7 @@ export default function Invitacion() {
           <div className="corazon-mini">♥</div>
 
           <p className="texto-leyenda">
-            UNIREMOS NUESTRAS VIDAS Y COMENZAREMOS<br />JUNTOS NUESTRA MEJOR HISTORIA.
+            UNIREMOS NUESTRAS VIDAS Y COMENZAREMOS<br />JUNTOS NUESTRA MEJOR HISTORIA.<br />NOS RESERVAMOS EL COLOR BLANCO.
           </p>
 
           {/* CONTENEDOR RESPONSIVE DE CAJAS Y BOTONES */}
@@ -235,7 +235,7 @@ export default function Invitacion() {
               ) : (
                 <div style={{ display: 'flex', alignItems: 'center', gap: '6px', width: '100%', justifyContent: 'space-between' }}>
                   <span style={{ fontSize: '9px', letterSpacing: '0.08em', color: '#dfc38a', fontWeight: 'bold' }}>
-                    CANTIDAD DE PERSONAS:
+                    CUPOS:
                   </span>
                   <select
                     value={cuposSeleccionados}
