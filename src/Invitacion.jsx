@@ -1,10 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import confetti from 'canvas-confetti';
 import './Invitacion.css';
 
 export default function Invitacion() {
   const [monedas, setMonedas] = useState(0);
   const [nombrePersona, setNombrePersona] = useState("");
+  const [nombreOficialBD, setNombreOficialBD] = useState("");
+  const [errorBusqueda, setErrorBusqueda] = useState("");
+  const [yaHabiaConfirmado, setYaHabiaConfirmado] = useState(false);
+
   const [cuposMaximos, setCuposMaximos] = useState(1);
   const [cuposSeleccionados, setCuposSeleccionados] = useState(1);
   const [cargando, setCargando] = useState(false);
@@ -17,11 +21,13 @@ export default function Invitacion() {
   const urlIglesia = "https://maps.google.com/?q=Parroquia+San+Damian+de+Molokai";
   const urlRecepcion = "https://maps.google.com/?q=Salon+Comunal+Bello+Horizonte";
 
-  const buscarInvitado = async (nombre) => {
+  const buscarInvitado = useCallback(async (nombre) => {
     const nombreLimpio = nombre.trim();
-    if (!nombreLimpio) return;
+    if (nombreLimpio.length < 3) return; // Evita buscar con 1 o 2 letras
 
     setCargando(true);
+    setErrorBusqueda("");
+
     try {
       const response = await fetch(`${API_URL}/api/invitados/buscar?nombre=${encodeURIComponent(nombreLimpio)}`);
       
@@ -29,25 +35,53 @@ export default function Invitacion() {
         const data = await response.json();
         if (data) {
           const max = Number(data.cupos) || 1;
+          setNombreOficialBD(data.nombre);
+          setYaHabiaConfirmado(Boolean(data.confirmado));
           setCuposMaximos(max);
           setConfirmado(false); 
           setAsistira(data.asistira !== undefined ? data.asistira : true);
           setCuposSeleccionados(data.cuposConfirmados || max);
         }
       } else {
-        console.warn('Invitado no encontrado.');
+        setNombreOficialBD("");
+        setYaHabiaConfirmado(false);
+        setCuposMaximos(1);
+        setErrorBusqueda("No encontramos tu nombre. Intenta con nombre y apellido.");
       }
     } catch (error) {
       console.error('Error conectando con el servidor:', error);
+      setErrorBusqueda("Error de conexión con el servidor.");
     } finally {
       setCargando(false);
     }
-  };
+  }, [API_URL]);
+
+  // Búsqueda automática con debounce (600ms después de dejar de escribir) sin usar Enter
+  useEffect(() => {
+    const nombreLimpio = nombrePersona.trim();
+    
+    if (nombreLimpio.length < 3) {
+      setNombreOficialBD("");
+      setErrorBusqueda("");
+      setYaHabiaConfirmado(false);
+      return;
+    }
+
+    const temporizador = setTimeout(() => {
+      buscarInvitado(nombreLimpio);
+    }, 600);
+
+    return () => clearTimeout(temporizador);
+  }, [nombrePersona, buscarInvitado]);
 
   const enviarRespuesta = async (vaAsistir) => {
-    const nombreLimpio = nombrePersona.trim();
-    if (!nombreLimpio) {
+    if (!nombrePersona.trim()) {
       alert("Por favor escribe tu nombre primero.");
+      return;
+    }
+
+    if (!nombreOficialBD) {
+      alert("Aún no encontramos tu invitación en la lista. Verifica tu nombre y apellido.");
       return;
     }
 
@@ -57,7 +91,7 @@ export default function Invitacion() {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ 
-          nombre: nombreLimpio,
+          nombre: nombreOficialBD,
           cuposConfirmados: vaAsistir ? Number(cuposSeleccionados) : 0,
           asistira: vaAsistir
         })
@@ -67,6 +101,7 @@ export default function Invitacion() {
       if (response.ok) {
         setConfirmado(true);
         setAsistira(vaAsistir);
+        setYaHabiaConfirmado(true);
         if (vaAsistir) {
           confetti({ particleCount: 50, spread: 80, origin: { y: 0.6 } });
         }
@@ -79,10 +114,6 @@ export default function Invitacion() {
     } finally {
       setEnviandoConfirmacion(false);
     }
-  };
-
-  const handleKeyDown = (e) => {
-    if (e.key === 'Enter') buscarInvitado(nombrePersona);
   };
 
   const dispararMonedas = (e) => {
@@ -155,16 +186,43 @@ export default function Invitacion() {
           {/* CONTENEDOR RESPONSIVE DE CAJAS Y BOTONES */}
           <div className="form-container-responsive">
             
-            <div className="badge-cupos badge-nombre-input">
+            <div className="badge-cupos badge-nombre-input" style={{ flexDirection: 'column', alignItems: 'stretch' }}>
               <input 
                 type="text" 
                 className="input-persona-texto"
                 value={nombrePersona}
-                onChange={(e) => setNombrePersona(e.target.value)}
-                onBlur={() => buscarInvitado(nombrePersona)}
-                onKeyDown={handleKeyDown}
+                onChange={(e) => {
+                  setNombrePersona(e.target.value);
+                  if (nombreOficialBD) setNombreOficialBD("");
+                  if (errorBusqueda) setErrorBusqueda("");
+                }}
                 placeholder="ESCRIBE AQUÍ TU NOMBRE"
               />
+
+              {nombreOficialBD && !cargando && (
+                <div style={{ marginTop: '4px' }}>
+                  <span style={{ 
+                    fontSize: '9px', 
+                    color: '#dfc38a', 
+                    textTransform: 'capitalize',
+                    letterSpacing: '0.05em',
+                    display: 'block'
+                  }}>
+                    ✔ Invitación de: <strong>{nombreOficialBD}</strong>
+                  </span>
+                  {yaHabiaConfirmado && (
+                    <span style={{ fontSize: '8.5px', color: '#2ecc71', display: 'block', marginTop: '2px' }}>
+                      (Ya habías respondido anteriormente; puedes actualizarlo abajo si deseas)
+                    </span>
+                  )}
+                </div>
+              )}
+
+              {errorBusqueda && !cargando && (
+                <span style={{ fontSize: '9px', color: '#ff7675', marginTop: '4px' }}>
+                  {errorBusqueda}
+                </span>
+              )}
             </div>
 
             <div className="badge-cupos">
@@ -199,7 +257,7 @@ export default function Invitacion() {
                 <button
                   type="button"
                   onClick={() => enviarRespuesta(true)}
-                  disabled={enviandoConfirmacion}
+                  disabled={enviandoConfirmacion || cargando}
                   style={{
                     width: '100%',
                     padding: '11px',
@@ -207,7 +265,8 @@ export default function Invitacion() {
                     color: '#4a0e17',
                     border: 'none',
                     borderRadius: '6px',
-                    cursor: 'pointer',
+                    cursor: (enviandoConfirmacion || cargando) ? 'not-allowed' : 'pointer',
+                    opacity: (enviandoConfirmacion || cargando) ? 0.7 : 1,
                     fontWeight: 'bold',
                     fontSize: '11px',
                     fontFamily: 'Montserrat, sans-serif',
@@ -220,7 +279,7 @@ export default function Invitacion() {
                 <button
                   type="button"
                   onClick={() => enviarRespuesta(false)}
-                  disabled={enviandoConfirmacion}
+                  disabled={enviandoConfirmacion || cargando}
                   style={{
                     width: '100%',
                     padding: '8px',
@@ -228,7 +287,8 @@ export default function Invitacion() {
                     color: '#e74c3c',
                     border: '1px solid #e74c3c',
                     borderRadius: '6px',
-                    cursor: 'pointer',
+                    cursor: (enviandoConfirmacion || cargando) ? 'not-allowed' : 'pointer',
+                    opacity: (enviandoConfirmacion || cargando) ? 0.7 : 1,
                     fontWeight: 'bold',
                     fontSize: '10px',
                     fontFamily: 'Montserrat, sans-serif'
