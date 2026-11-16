@@ -233,7 +233,12 @@ export default function Invitacion() {
               {cargando ? (
                 <span style={{ color: '#dfc38a', fontSize: '10px' }}>BUSCANDO...</span>
               ) : (
-                <div style={{ display: 'flex', alignItems: 'center', gap: '6px', width: '100%', justifyContent: 'space-between' }}>
+                <div style={{ 
+                  display: 'flex', 
+                  alignItems: 'center', 
+                  gap: '15px', 
+                  width: '85%', 
+                  justifyContent: 'center' }}>
                   <span style={{ fontSize: '9px', letterSpacing: '0.08em', color: '#dfc38a', fontWeight: 'bold' }}>
                     CUPOS:
                   </span>
